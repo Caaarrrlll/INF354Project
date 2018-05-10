@@ -37,6 +37,17 @@
         </dd>
     </dl>
 </div>
+
+<form asp-page="./Details" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="id" value="@Model.Client.ID" />
+            <input type="date" name="date" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>

@@ -21,9 +21,9 @@ namespace GroupProject.Pages.Clients
 
         public Client Client { get; set; }
         public IList<Subscription> Subscription { get; set; }
+        public string CurrentFilter { get; set; }
 
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, DateTime? date)
         {
             if (id == null)
             {
@@ -33,7 +33,12 @@ namespace GroupProject.Pages.Clients
             Client = await _context.Clients
                 .Include(c => c.Title).SingleOrDefaultAsync(m => m.ID == id);
 
-            Subscription = await _context.Subscriptions
+            Subscription = date.HasValue ? await _context.Subscriptions
+                .Where(s => s.ClientID == Client.ID && s.Date == date)
+                .Include(s => s.Client)
+                .Include(s => s.Package).ToListAsync() :
+               
+               await _context.Subscriptions
                 .Where(s => s.ClientID == Client.ID)
                 .Include(s => s.Client)
                 .Include(s => s.Package).ToListAsync();
