@@ -6,14 +6,19 @@
     <title>@ViewData["Title"] - INF354 Group Project - ISP</title>
 
     <environment include="Development">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+
     </environment>
     <environment exclude="Development">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -31,7 +36,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/About">About</a></li>
+<!--                    <li><a asp-page="/About">About</a></li>-->
                     <li><a asp-page="/Clients/Index">Clients</a></li>
                     <li><a asp-page="/Titles/Index">Titles</a></li>
                     <li><a asp-page="/Packages/Index">Packages</a></li>
@@ -42,12 +47,60 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         <script src="~/js/Chart.min.js" asp-append-version="true"></script>
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2017 - INF354 Group Project - ISP</p>
+        <footer id="gtco-footer" class="gtco-section" role="contentinfo">
+            <div class="gtco-container">
+                <div class="row row-pb-md">
+                    <div class="col-md-4 gtco-widget gtco-footer-paragraph">
+                        <h3>CubeISP</h3>
+                        <p>CubeISP is a University of Pretoria team of 5 members, creating a... well, creating magic for the INF 354 Mini-Project</p>
+                    </div>
+                    <div class="col-md-4 gtco-footer-link">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="gtco-list-link">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Clients</a></li>
+                                    <li><a href="#">Titles</a></li>
+                                    <li><a href="#">Packages</a></li>
+                                    <li><a href="#">Connections</a></li>
+                                    <li><a href="#">Subscriptions</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    <a href="tel://1234567890">+27 82 556 7890</a> <br>
+                                    <a href="#">inf354@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 gtco-footer-subscribe">
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                            <input type="email" class="form-control" id="" placeholder="Email">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="gtco-copyright">
+                <div class="gtco-container">
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <p><small>&copy; 2018 INF354-ISP. All Rights Reserved. </small></p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p><small>Designed by CubeISP </small> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -56,6 +109,13 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <!--<script src="~/js/jquery.easing.1.3.js"></script>
+        <script src="~/js/jquery.waypoints.min.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/js/magnific-popup-options.js"></script>
+        <script src="~/js/main.js"></script>-->
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

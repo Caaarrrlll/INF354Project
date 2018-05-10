@@ -16,6 +16,7 @@
     <Folder Include="Data\" />
     <Folder Include="Pages\Packages\" />
     <Folder Include="Pages\Subscriptions\" />
+    <Folder Include="Pages\Styles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Packages\Create.cshtml" />
