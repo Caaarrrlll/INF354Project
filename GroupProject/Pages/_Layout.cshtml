@@ -37,11 +37,13 @@
                     <li><a asp-page="/Packages/Index">Packages</a></li>
                     <li><a asp-page="/Connections/Index">Connections</a></li>
                     <li><a asp-page="/Subscriptions/Index">Subscriptions</a></li>
+                    <li><a asp-page="/Graphs/Index">Graphs</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content">
+        <script src="~/js/Chart.min.js" asp-append-version="true"></script>
         @RenderBody()
         <hr />
         <footer>
@@ -50,6 +52,7 @@
     </div>
 
     <environment include="Development">
+        <script src="~/js/Chart.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

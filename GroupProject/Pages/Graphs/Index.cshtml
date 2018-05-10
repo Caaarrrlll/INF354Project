@@ -1,0 +1,139 @@
+@page
+@model GroupProject.Pages.Graphs.IndexModel
+@{
+    ViewData["Title"] = "Graphs page";
+}
+<div class="jumbotron">
+    <h3>Graph</h3> 
+</div>
+<canvas id="myChart" width="15" height="5"></canvas>
+<div>
+    <table id="packages"> <!-- Packages -->
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Subscription[0].Package)</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Subscription) {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Package.Name)</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <table id="connections"> <!-- connections -->
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Package[0].Connection)</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Package) {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Connection.Name)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    
+    <script>
+        //=----------------------------------
+        
+           // get arrays of table rows.
+
+            //this one works..... it puts all the elements in connections in the array
+            var connectionsArray = new Array();
+            var counts = [0,0,0,0];
+            for(var i=1; i<document.getElementById("connections").rows.length; i++) //counts the number of connections - this works but array data is wrong
+            {
+                connectionsArray[i] = (document.getElementById("connections").rows[i].innerText);
+                //alert(connectionsArray[i]); //just to see if elements in array is correct
+                
+                switch(connectionsArray[i])
+                {
+                    case "ADSL":
+                        counts[0]++;
+                        break;
+                    case "VDSL":
+                        counts[1]++;
+                        break;
+                    case "Fibre":
+                        counts[2]++;
+                        break;
+                    case "LTE":
+                        counts[3]++;
+                        break;
+                }
+            }
+
+            //this one works too..... it puts all the elements in packages in the array yay
+            var packagesArray = new Array();
+            for(var i=1; i<document.getElementById("packages").rows.length; i++) //counts the number of packages - this works but array data is wrong
+            {
+                packagesArray[i] = document.getElementById("packages").rows[i].innerText;
+                //alert(packagesArray[i]);
+            }
+            
+        /**/
+        //-----------------------------------
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                /*
+                labels: [document.getElementById(connections);],
+                or 
+                for(int i=0; i<connectionsArray.size(); i++)
+                {
+                    labels: [connectionsArray[i],],
+                }
+                */
+                labels: ["ADSL", "VDSL", "Fibre", "LTE"],
+                datasets: [{
+                    label: '# of Packages',
+                    /*
+                    data: [document.getElementById("packages");],
+                    or 
+                    for(int i=0; i<packagesArray.size(); i++)
+                    {
+                        labels: [packagesArray[i],],
+                    }
+                    */
+                    data: counts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</div>
