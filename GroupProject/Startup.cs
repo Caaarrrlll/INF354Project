@@ -24,7 +24,7 @@ namespace GroupProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ISPContext>(options => {
-                options.UseMySQL(Configuration.GetConnectionString("francois"));
+                options.UseMySQL(Configuration.GetConnectionString("peter"));
             });
             services.AddMvc();
         }
